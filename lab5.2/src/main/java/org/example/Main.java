@@ -29,7 +29,7 @@ public class Main {
             registration("average_of_maximum_point", new AverageOfMaximumPointCommand(console, collectionManager));
             registration("min_by_name", new MinByNameCommand(console, collectionManager));
             registration("print_descending", new PrintDescendingCommand(console, collectionManager));
-            registration("add", new AddCommand(console, collectionManager));
+            //registration("add", new AddCommand(console, collectionManager));
         }};
         Runner runner = new Runner(console, commandManager);
         runner.commandGetting();
