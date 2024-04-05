@@ -29,10 +29,17 @@ public class Main {
             registration("average_of_maximum_point", new AverageOfMaximumPointCommand(console, collectionManager));
             registration("min_by_name", new MinByNameCommand(console, collectionManager));
             registration("print_descending", new PrintDescendingCommand(console, collectionManager));
-            //registration("add", new AddCommand(console, collectionManager));
+            registration("add", new AddCommand(console, collectionManager));
         }};
         Runner runner = new Runner(console, commandManager);
         runner.commandGetting();
+
+        //доделать done
+        //Сделать add done
+        //Переделать вывод (чтобы был красивый) done
+        //Ограничения по координатам, сделать double and Long done
+        //Сломалось insert done
+        //Проверка валидность при выгрузке done
 
 
     }

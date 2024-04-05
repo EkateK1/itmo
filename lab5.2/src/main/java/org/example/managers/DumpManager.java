@@ -6,6 +6,7 @@ import org.example.models.LabWork;
 
 import java.io.*;
 import java.lang.reflect.Type;
+import java.util.Map;
 import java.util.TreeMap;
 
 import com.google.gson.Gson;
@@ -65,6 +66,13 @@ public class DumpManager {
 
                 Type type = new TypeToken<TreeMap<Integer, LabWork>>(){}.getType();
                 TreeMap<Integer, LabWork> collection = gson.fromJson(jsonString.toString(), type);
+                for (Map.Entry<Integer, LabWork> entry : collection.entrySet()){
+                    if (!entry.getValue().validate()){
+                        console.printError("Введенные данные невалидны, проверьте файл");
+                        collection.clear();
+                        return collection;
+                    }
+                }
                 console.println("Коллекция успешно загружена");
                 return collection;
 

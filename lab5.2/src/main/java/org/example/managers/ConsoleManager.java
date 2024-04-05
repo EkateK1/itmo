@@ -8,6 +8,8 @@ import java.util.Scanner;
 public class ConsoleManager implements Console {
 
     private static final String prompt = "> ";
+    private static boolean fileMode = false;
+    private static Scanner scanner;
 
     /**
      * Выводит object.toString() в консоль
@@ -39,7 +41,17 @@ public class ConsoleManager implements Console {
         return scanner.nextLine();
     }
 
-    
+    public Scanner getScanner(){
+        return scanner;
+    }
+    public void setScanner(Scanner scanner){
+        ConsoleManager.scanner = scanner;
+    }
+
+    public void setFileMode(boolean b){
+        fileMode = b;
+    }
+    public boolean getFileMode(){return fileMode;}
 
 
 

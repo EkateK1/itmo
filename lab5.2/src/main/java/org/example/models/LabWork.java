@@ -34,17 +34,17 @@ public class LabWork extends Element implements Validatable {
     }
     @Override
     public String toString() {
-        return "LabWork{" +
-                "id=" + id + '\n' +
-                ", name='" + name + '\'' +
-                ", coordinates=" + coordinates +
-                ", creationDate=" + creationDate +
-                ", minimalPoint=" + minimalPoint +
-                ", maximumPoint=" + maximumPoint +
-                ", personalQualitiesMinimum=" + personalQualitiesMinimum +
-                ", difficulty=" + difficulty +
-                ", discipline=" + discipline +
-                '}';
+        return "LabWork{" + '\n' +
+                "id = " + id + '\n' +
+                "name = " + name + '\n' +
+                "coordinates { " + '\n' + coordinates + '\n' +
+                "creationDate = " + creationDate + '\n' +
+                "minimalPoint = " + minimalPoint + '\n' +
+                "maximumPoint = " + maximumPoint + '\n' +
+                "personalQualitiesMinimum = " + personalQualitiesMinimum + '\n' +
+                "difficulty = " + difficulty + '\n' +
+                "discipline { " + '\n' + discipline + '\n' +
+                '}' + '\n';
     }
 
     @Override

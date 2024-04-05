@@ -13,9 +13,8 @@ public class Discipline implements Validatable {
 
     @Override
     public String toString() {
-        return "Discipline{" +
-                "name='" + name + '\'' +
-                ", practiceHours=" + practiceHours +
+        return  '\t' + "name = " + name + '\n' +
+                '\t' + "practiceHours = " + practiceHours + '\n' +
                 '}';
     }
 

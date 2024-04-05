@@ -2,17 +2,19 @@ package org.example.models;
 
 public class Coordinates {
 
-    private double x;
-    private double y;
+    private double x; //от -200 до 120
+    private Long y; // от -5 до 100
 
-    public Coordinates(double x, double y){
+    public Coordinates(double x, Long y){
         this.x = x;
         this.y = y;
     }
 
     @Override
     public String toString(){
-        return (x + ";" + y);
+        return  '\t' + "x = " + x + '\n' +
+                '\t' + "y = " + y + '\n' +
+                "}";
     }
 
     @Override
@@ -26,7 +28,7 @@ public class Coordinates {
         }
 
         Coordinates other = (Coordinates) obj;
-        return x == other.x && y == other.y;
+        return x == other.x && y.equals(other.y);
 
     }
 }

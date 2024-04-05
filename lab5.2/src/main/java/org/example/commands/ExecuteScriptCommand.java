@@ -1,19 +1,21 @@
 package org.example.commands;
 
-import org.example.managers.CollectionManager;
-import org.example.managers.ConsoleManager;
-import org.example.managers.DumpManager;
+import org.example.managers.*;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 public class ExecuteScriptCommand extends Command{
 
     private DumpManager dumpManager;
     private CollectionManager collectionManager;
     private ConsoleManager console;
+    private CommandManager commandManager;
+    private Runner runner;
+
 
     public ExecuteScriptCommand(DumpManager dumpManager, CollectionManager collectionManager, ConsoleManager console) {
         super("execute_script", "считать и исполнить скрипт из указанного файла. " +
@@ -24,24 +26,6 @@ public class ExecuteScriptCommand extends Command{
     }
 
     public boolean execute(String argument){
-        if (argument.isEmpty()) {
-            console.printError("Введите файл со скриптом");
-            return false;
-        }
-        String fileName = argument;
-        try(FileInputStream fileInput = new FileInputStream(fileName);
-            InputStreamReader inputReader = new InputStreamReader(fileInput);
-            BufferedReader reader = new BufferedReader(inputReader);)
-            {
-                String line;
-                while ((line = reader.readLine()) != null){
-                    line = line.trim();
-                    if (!line.isEmpty()){
-
-                    }
-                }
-            }catch(IOException e){
-            console.printError("Ошибка чтения файла");
-        }
-        return true;}
+        return true;
+    }
 }

@@ -10,8 +10,15 @@ public class DisciplineCreating {
         String name;
         while (true){
             console.println("Введите название дисциплины");
-            name = console.readln().trim();
+            if (console.getFileMode()){
+                name = console.getScanner().nextLine().trim();
+            } else {
+                name = console.readln().trim();
+            }
             if (name.equals("exit")) System.exit(1);
+            if (console.getFileMode()) {
+                console.println(name);
+            }
             if (name.isEmpty()){
                 console.printError("Значение не было введено");
             } else{
@@ -25,7 +32,12 @@ public class DisciplineCreating {
         Long practiceHours;
         while (true){
             console.println("Введите часы практики");
-            var line = console.readln().trim();
+            var line = "";
+            if (console.getFileMode()){
+                line = console.getScanner().nextLine().trim();
+            } else {
+                line = console.readln().trim();
+            }
             if (line.equals("exit")) System.exit(1);
             if (line.isEmpty()){
                 console.printError("Значение не было введено");
@@ -33,6 +45,9 @@ public class DisciplineCreating {
             if (!line.isEmpty()){
                 try{
                     practiceHours = Long.parseLong(line);
+                    if (console.getFileMode()) {
+                        console.println(practiceHours);
+                    }
                     if (practiceHours<=0){
                         console.printError("Значение должно быть больше нуля");
                     } else{
