@@ -1,0 +1,2 @@
+execute_script example3.scr
+remove_key 3

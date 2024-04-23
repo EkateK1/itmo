@@ -1,0 +1,13 @@
+add
+laba
+2
+3
+40
+50
+3
+VERY_EASY
+prog
+12
+show
+execute_script example2.scr
+remove_key 3
