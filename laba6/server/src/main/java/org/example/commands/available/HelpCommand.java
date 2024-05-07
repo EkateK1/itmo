@@ -20,7 +20,7 @@ public class HelpCommand extends Command {
         commandManager.getCommandMap().values().forEach(command -> {
             result.append(command.getName()).append(" ").append(command.getDescription()).append("\n");
         });
-        return new Response(Status.OK, result.toString());
+        return new Response(Status.OK, result.deleteCharAt(result.length() - 1).toString());
     }
 
 

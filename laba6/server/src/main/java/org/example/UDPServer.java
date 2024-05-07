@@ -25,6 +25,7 @@ import java.util.logging.Logger;
 public class UDPServer {
 
     private final int PACKET_SIZE = 1024*1024;
+    private final int CAPACITY = 65000;
     private final DatagramChannel channel;
     private InetAddress host;
     private final SocketAddress address;
@@ -53,7 +54,7 @@ public class UDPServer {
     }
 
     public Request receiveData() throws IOException {
-        ByteBuffer receiveBuf = ByteBuffer.allocate(65000);
+        ByteBuffer receiveBuf = ByteBuffer.allocate(CAPACITY);
         SocketAddress address = null;
         while (address == null) {
             address = channel.receive(receiveBuf);

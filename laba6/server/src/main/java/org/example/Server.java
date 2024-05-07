@@ -8,13 +8,14 @@ import org.example.utility.ConsoleManager;
 
 import java.io.IOException;
 import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.logging.Logger;
 
 public class Server {
-    public static final int PORT = 23516;
+    public static final int PORT = 4001;
     private static final ConsoleManager console = new ConsoleManager();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws UnknownHostException {
 
         DumpManager dumpManager = new DumpManager("example.json", console);
         CollectionManager collectionManager = new CollectionManager(dumpManager);
@@ -42,12 +43,11 @@ public class Server {
         }};
 
         try{
-            UDPServer server = new UDPServer(InetAddress.getLocalHost(), PORT, logger, console, commandManager);
+            UDPServer server = new UDPServer(InetAddress.getByName("localhost"), PORT, logger, console, commandManager);
             server.run();
             collectionManager.saveCollection(dumpManager);
         }catch (IOException e){
-            console.printError("При подключении что-то пошло не так" + e.getMessage());
+            console.printError("При подключении что-то пошло не так " + e.getMessage());
         }
-
     }
 }

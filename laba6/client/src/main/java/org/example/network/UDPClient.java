@@ -10,18 +10,15 @@ import java.net.*;
 
 public class UDPClient {
     private final int PACKET_SIZE = 1024*1024;
+    private final int TIMEOUT = 100000;
     private final DatagramSocket socket;
-    private final InetAddress host;
-    private final int port;
-    private final InetSocketAddress address;
+    private final SocketAddress address;
 
-    public UDPClient(InetAddress host, int port, DatagramSocket socket) throws SocketException {
-        this.port = port;
+    public UDPClient(SocketAddress address, DatagramSocket socket) throws SocketException {
         this.socket = socket;
-        this.host = host;
-        this.address = new InetSocketAddress(host, port);
-        this.socket.setSoTimeout(100000);
-
+        this.address = address;
+        this.socket.setSoTimeout(TIMEOUT);
+        System.out.println("Клиент подключен к " + address);
     }
 
     public void sendData(Request request) throws IOException {
@@ -32,7 +29,7 @@ public class UDPClient {
 
     public Response readData() throws IOException, ClassNotFoundException {
         try {
-            byte[] buffer = new byte[PACKET_SIZE];
+        byte[] buffer = new byte[PACKET_SIZE];
         DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
         socket.receive(packet);
         Response response = (Response) Serialisation.deserializeObject(packet.getData());
